@@ -11,6 +11,13 @@ wall = 2;
 cable_width = 16;
 cable_height = 1;
 
+support_width=26;
+support_height=18;
+
+
+support_origin = [(width - support_width) / 2, (height - support_height) / 2, wall];
+
+
 module cable() {
     translate([(width-cable_width)/2, 2*wall, wall+cable_height/2])
         rotate([90,0,0]) {
@@ -29,9 +36,20 @@ module house() {
     }
 }
 
+module support() {
+    difference() {
+        cylinder(d1=10,d2=3,h=5);
+        cylinder(d=1,h=6);
+    }
+}
+
 //translate([50,0,0])
-difference() {
+union() {
     house();
+    translate(support_origin) support();
+    translate(support_origin + [support_width, 0, 0]) support();
+    translate(support_origin + [0, support_height, 0]) support();
+    translate(support_origin + [support_width, support_height, 0]) support();
 }
 
 echo(version=version());
