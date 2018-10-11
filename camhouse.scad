@@ -11,7 +11,7 @@ wall = 2;
 cable_width = 16;
 cable_height = 1;
 
-support_width=26;
+support_width=21;
 support_height=18;
 
 
@@ -38,12 +38,12 @@ module house() {
 
 module support() {
     difference() {
-        cylinder(d1=10,d2=3,h=5);
+        cylinder(d1=10,d2=1.5,h=5);
         cylinder(d=1,h=6);
     }
 }
 
-//translate([50,0,0])
+translate([-width/2,-height/2,-depth/2])
 union() {
     house();
     translate(support_origin) support();
