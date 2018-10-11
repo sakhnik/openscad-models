@@ -22,8 +22,8 @@ module cable() {
     translate([(width-cable_width)/2, 2*wall, wall+cable_height/2])
         rotate([90,0,0]) {
             hull() {
-                cylinder(d=cable_height, h=100);
-                translate([cable_width,0,0]) cylinder(d=cable_height, h=100);
+                cylinder(d=cable_height, h=3*wall);
+                translate([cable_width,0,0]) cylinder(d=cable_height, h=3*wall);
             }
         }
 }
